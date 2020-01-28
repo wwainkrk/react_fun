@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+/*
 const list = [
   {
   title: 'React',
@@ -19,46 +20,28 @@ const list = [
   objectID: 1,
   },
 ];
+*/
 
 class App extends Component {
   render() {
+    const numbers = [1,2,3,4,5];
+    const doubleNumbers = numbers.map((number) => number*2)
+    const listDobule = doubleNumbers.map((double) =>
+      <li>{double}</li>
+    )
     return (
       <div className="App">
-        {list.map(function(item) {
-          //console.log(list);
-          return (
-            <div key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title}</a>
-              </span>
-              <span>{item.author}</span>
-              <span>{item.num_comments}</span>
-              <span>{item.points}</span>
-            </div>
-          )
-        })}
+        <ul>{listDobule}</ul>
+        {/* <ul>
+          {doubleNumbers.map((item) =>
+            //console.log(item);
+            <li>{item}</li>
+          )} 
+        </ul> */}
       </div>
     )
   }
 }
 
-/*
-function App() {
-  function formatName(user) {
-    return user.name + ' ' + user.surname;
-  }
-
-  var user = {
-    name: 'Sebastian',
-    surname: 'Warszawa'
-  }
-
-  var helloWorld = 'Welcome FEV ' + formatName(user) + ', you are on the Road to learn React';
-  return (
-    <div className="App">
-      <h2>{helloWorld}</h2>
-    </div>
-  );
-  */
 
 export default App;
