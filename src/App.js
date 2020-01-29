@@ -1,36 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
 
-/*
-const list = [
-  {
-  title: 'React',
-  url: 'https://reactjs.org/',
-  author: 'Jordan Walke',
-  num_comments: 3,
-  points: 4,
-  objectID: 0,
-  },
-  {
-  title: 'Redux',
-  url: 'https://redux.js.org/',
-  author: 'Dan Abramov, Andrew Clark',
-  num_comments: 2,
-  points: 5,
-  objectID: 1,
-  },
-];
-*/
+function ListItem(props) {
+  return (
+    <li>{props.value}</li>
+  )
+}
 
 function NumberList(props) {
   const numbers = props.numbers;
-  const doubleNumbers = numbers.map((number) => number*2);
-  const listDobule = doubleNumbers.map((double) =>
-    <li>{double}</li>
-  );
-  return (
-    <ul>{listDobule}</ul>
-  );
+  //const doubleNumbers = numbers.map((number) => number*2);
+  //const listDobule = doubleNumbers.map((double) =>
+  // const listNumbers = numbers.map((number) =>
+  //   <ListItem key={number.toString()} value={number*2} />
+  // );
+  // return (
+  //   <ul>{listNumbers}</ul>
+  // );
+  return(
+    <ul>
+      {numbers.map((number) =>
+        <ListItem key={number.toString()} value={number*2} />
+      )}
+    </ul>
+  )
 }
 
 class App extends Component {
