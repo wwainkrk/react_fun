@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+function tick() {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+
+    );
+}
+
+setInterval(tick, 1000);
 
 if (module.hot) {
     module.hot.accept();

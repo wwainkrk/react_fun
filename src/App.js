@@ -23,13 +23,20 @@ function Hello (props) {
   );
 }
 
-function Clock(props) {
-  return (
-    <div>
-      <Hello user={props.user}/>
-      <h2>Aktualny czas: {props.date.toLocaleTimeString()}</h2>
-    </div>
-  );
+class Clock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  render() {
+    return (
+      <div>
+        <Hello user={this.props.user}/>
+        <h2>Aktualny czas: {this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    );
+  }
 }
 
 class App extends Component {
@@ -43,9 +50,11 @@ class App extends Component {
     return (
       <div className="App">
         {/* <NumberList numbers={numbers}></NumberList> */}
-        <Clock user={author} date={new Date()} />
+        <Clock user={author} />
       </div>
     );
+
+    setInterval(Clock.state, 1000);
   }
 }
 
