@@ -35,7 +35,12 @@ function Hello (props) {
 class Clock extends Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
+    this.state = {
+      date: new Date(),
+      isToggleOn: true
+    };
+
+    this.handleClick = this.handleClick.bind(this);                     // Set class method for instance (not default in Javascript)
   }
 
   componentDidMount() {                                                 // Set timer for component Clock, when component will be mount
@@ -55,11 +60,20 @@ class Clock extends Component {
     });
   }
 
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
   render() {
     return (                                                            // Put small function component into the class component with timer, initialization Date State
       <div>
         <Hello user={this.props.user}/>                                 
         <h2>Aktualny czas: {this.state.date.toLocaleTimeString()}</h2>
+        <button onClick={this.handleClick}>
+          {this.state.isToggleOn ? 'ON' : 'OFF'}
+        </button>
       </div>
     );
   }
